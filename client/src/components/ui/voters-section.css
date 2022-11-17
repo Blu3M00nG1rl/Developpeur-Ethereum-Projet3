@@ -1,0 +1,54 @@
+.section {
+    padding-top: 120px;
+    background: #f2f1f8;
+    height: 820px;
+}
+
+.content_data {
+    padding-top: 60px;
+    height: 400px;
+    color: #151964;
+}
+
+
+.content h2 {
+    margin-top: 5%;
+    line-height: 55px;
+    font-size: 2.5rem;
+}
+
+.content h2 span {
+    color: #151964;
+}
+
+.btns {
+    margin-top: 40px;
+}
+
+.btn {
+    border: none;
+    outline: none;
+    padding: 7px 25px !important;
+    border-radius: 50px !important;
+    border: 1px !important;
+    font-size: .9rem;
+    background: linear-gradient(90deg, rgb(255, 99, 123) -2.21%, rgb(61, 67, 120) 100%);
+}
+
+.btn i {
+    color: #fff;
+    font-size: 1rem;
+}
+
+.btn span {
+    text-decoration: none;
+    color: #fff;
+}
+
+input {
+    border-radius: 50px;
+    color: rgb(59, 67, 70);
+    padding: 7px 25px;
+    border: none;
+    width: 70%
+}

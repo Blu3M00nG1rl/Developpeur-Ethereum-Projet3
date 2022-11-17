@@ -1,0 +1,12 @@
+Pour faire la vidéo
+	https://www.loom.com/
+	si non fonctionnel sur linux (https://obsproject.com/fr)
+	
+Pour la blockchain public
+	Vercel
+	
+Affichage différent (Voter, NonVoter, Admin)
+
+Récupérer les proposals
+
+Modifier le contrat
