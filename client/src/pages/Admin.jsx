@@ -1,9 +1,9 @@
 import React from 'react';
-import VotersSection from '../components/ui/VotersSection';
+import AdminSection from '../components/ui/admin/AdminSection';
 
 const Voters = () => {
     return <>
-        <VotersSection />
+        <AdminSection />
     </>
 };
 

@@ -1,9 +1,10 @@
 import React from 'react';
+import ProposalsSection from '../components/ui/proposals/ProposalsSection';
 
 const Proposals = () => {
     return (
         <div>
-            Proposals
+            <ProposalsSection />
         </div>
     );
 };

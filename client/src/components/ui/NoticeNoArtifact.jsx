@@ -1,8 +1,7 @@
 function NoticeNoArtifact() {
     return (
         <p>
-            ⚠️ Cannot find <span className="code">Voting</span> contract artifact.
-            Please complete the above preparation first, then restart the react dev server.
+            Le smart-contract n'est pas accessible.
         </p>
     );
 }
