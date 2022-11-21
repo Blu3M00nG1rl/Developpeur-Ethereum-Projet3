@@ -1,6 +1,6 @@
 # Developpeur-Ethereum-Projet3
 Projet 3 de la formation développeur ethereum
-* Test d'un smart contract de voting
+* Develloppement d'une DApp de voting
 
 ## Installation de l'environnement
 1. Lancement de ganache
@@ -24,6 +24,6 @@ Application qui permet de voter pour le plus grand artiste du 20ème siècle.
 3. Seuls les voteurs enregistrés peuvent soumettre des propositions et voter (quand les sessions le permettant ont été ouvertes par l'admin)
 
 ## Autre information
-* Vidéo de démonstration de l'application disponible ici :
-* Application visible depuis Vercel :
+* Vidéo de démonstration de l'application disponible ici : https://www.loom.com/share/b6e7ed94dc374917b63b2e0b72266ac6
+* Application visible depuis Vercel : https://developpeur-ethereum-projet3.vercel.app/home
 * L'application est déployée sur le testnet Goerli à l'adresse ci-après : https://goerli.etherscan.io/address/0x9253a9384b7e46f2350c3518217de4691414af33
