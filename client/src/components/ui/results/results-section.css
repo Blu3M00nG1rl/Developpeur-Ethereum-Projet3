@@ -26,5 +26,7 @@
 .result {
     margin-bottom: 50px;
     border: 4mm ridge rgba(211, 220, 50, .6);
-    width: auto;
+    width: fit-content;
+    padding: 30px;
+    margin-left: 36%;
 }

@@ -16,9 +16,9 @@ function VotingSectionData() {
                     console.log("data :" + data[1]);
                     console.log("wallet :" + accounts)
                     if (data[1] == true) {
-                        setVerifHasVoted("Vous avez déjà voté pour la proposition " + data[2]);
+                        setVerifHasVoted("Vous avez voté pour la proposition " + data[2]);
                     } else {
-                        setVerifHasVoted("Soumettez votre vote");
+                        setVerifHasVoted("Vous n'avez pas encore voté");
                     }
                 })
                 .catch((err) => console.log("erreur : " + err));

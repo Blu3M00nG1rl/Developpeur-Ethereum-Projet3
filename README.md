@@ -1,40 +1,29 @@
-# React Truffle Box
+# Developpeur-Ethereum-Projet3
+Projet 3 de la formation développeur ethereum
+* Test d'un smart contract de voting
 
-This box comes with everything you need to start using Truffle to write, compile, test, and deploy smart contracts, and interact with them from a React app.
+## Installation de l'environnement
+1. Lancement de ganache
+2. Install Truffle React (crée un environnement Truffle pour écrire, compiler, tester, et deployer les smart contracts, et interagir avec via le front React)
+   $ npx truffle unbox react
+3. Création d'un fichier .env pour y intégrer des variables d'environnement (Api Key de Infura et Mnemonic de Ganache)
+4. truffle-config.js et .env : modification des paramètres de networks pour travailler en local ou sur un testnet (avec un clé infura ou alchemy)
 
-## Installation
-
-First ensure you are in an empty directory.
-
-Run the `unbox` command using 1 of 2 ways.
-
-```sh
-# Install Truffle globally and run `truffle unbox`
-$ npm install -g truffle
-$ truffle unbox react
-```
-
-```sh
-# Alternatively, run `truffle unbox` via npx
-$ npx truffle unbox react
-```
-
-Start the react dev server.
-
-```sh
+## Lancement de l'application
+Lancer la compilation et le déploiement du smart contract
+$ cd client
+$ truffle migrate
+Lancer ensuite le client react
 $ cd client
 $ npm start
-  Starting the development server...
-```
 
-From there, follow the instructions on the hosted React app. It will walk you through using Truffle and Ganache to deploy the `Voting` contract, making calls to it, and sending transactions to change the contract's state.
+## Utilisation de l'application
+Application qui permet de voter pour le plus grand artiste du 20ème siècle.
+1. L'admin enregistre les voteurs sur une whitelist
+2. L'admin gère le worklow du processus de vote (ouverture des propositions, fermeture des propositions, ouverture du vote, fermeture du vote, calcul des résultats)
+3. Seuls les voteurs enregistrés peuvent soumettre des propositions et voter (quand les sessions le permettant ont été ouvertes par l'admin)
 
-## FAQ
-
-- __How do I use this with Ganache (or any other network)?__
-
-  The Truffle project is set to deploy to Ganache by default. If you'd like to change this, it's as easy as modifying the Truffle config file! Check out [our documentation on adding network configurations](https://trufflesuite.com/docs/truffle/reference/configuration/#networks). From there, you can run `truffle migrate` pointed to another network, restart the React dev server, and see the change take place.
-
-- __Where can I find more resources?__
-
-  This Box is a sweet combo of [Truffle](https://trufflesuite.com) and [Create React App](https://create-react-app.dev). Either one would be a great place to start!
+## Autre information
+Vidéo de démonstration de l'application disponible ici :
+Application visible depuis Vercel :
+L'application est déployée sur le testnet Goerli à l'adresse ci-après :

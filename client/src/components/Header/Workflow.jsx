@@ -11,7 +11,7 @@ function Workflow({ callStatus }) {
                             switch (callStatus) {
                                 case "1":
                                     return (
-                                        <div className="text-center">Ouverture de l'enregistrement des propositions.</div>
+                                        <div className="text-center">Ouverture de l'enregistrement des propositions - Cliquez sur "Propositions" et soumettez une ou plusieurs propositions.</div>
                                     )
                                 case "2":
                                     return (
@@ -19,7 +19,7 @@ function Workflow({ callStatus }) {
                                     )
                                 case "3":
                                     return (
-                                        <div className="text-center">Session de vote ouverte - Votez pour le numéro de votre proposition préférée.</div>
+                                        <div className="text-center">Session de vote ouverte - Cliquez sur "Vote" et votez pour le numéro de votre proposition préférée.</div>
                                     )
                                 case "4":
                                     return (
@@ -27,7 +27,7 @@ function Workflow({ callStatus }) {
                                     )
                                 case "5":
                                     return (
-                                        <div className="text-center">Session de vote cloturée  -  Affichez la proposition gagnante.</div>
+                                        <div className="text-center">Session de vote cloturée  -  Cliquez sur "Résultats" et affichez la proposition gagnante.</div>
                                     )
                                 default:
                                     return (

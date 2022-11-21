@@ -19,6 +19,7 @@ function VotingSectionBtns() {
         }
         const newVote = inputNumber;
         await contract.methods.setVote(newVote).send({ from: accounts[0] });
+        window.location.reload();
     };
 
     return (

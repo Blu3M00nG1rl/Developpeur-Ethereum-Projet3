@@ -74,7 +74,7 @@ function Header() {
         }
         if (callStatus == 3) {
             return <li className="nav_item">
-                <NavLink to="/vote" className={navClass => navClass.isActive ? 'active' : ''}
+                <NavLink to="/voting" className={navClass => navClass.isActive ? 'active' : ''}
                 >Votes
                 </NavLink>
             </li>

@@ -4,9 +4,11 @@ function NoticeNoArtifact() {
     return (
         <section className="section">
             <Row>
-                <h1 className="text-center">
-                    Le smart-contract n'est pas accessible.
-                </h1>
+                <div className="content">
+                    <h1 className="text-center">
+                        Le smart-contract n'est pas accessible.
+                    </h1>
+                </div>
             </Row>
         </section>
 
