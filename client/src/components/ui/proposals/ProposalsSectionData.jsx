@@ -58,7 +58,7 @@ function ProposalsSectionData() {
                 <tbody>
                     {oldDescriptions.map((item, index) => (
                         <tr key={index}>
-                            <td>{index + 1}</td>
+                            <td>{index}</td>
                             <td>{item}</td>
                         </tr>
                     ))}
