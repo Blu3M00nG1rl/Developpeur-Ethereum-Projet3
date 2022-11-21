@@ -19,6 +19,7 @@ function ProposalsSectionBtns() {
         }
         const newProposal = inputText;
         await contract.methods.addProposal(newProposal).send({ from: accounts[0] });
+        window.location.reload();
     };
 
     return (
@@ -29,7 +30,7 @@ function ProposalsSectionBtns() {
                 value={inputText}
                 onChange={handleTextChange}
             />
-            <button className='btn d-flex align-items-center gap-2'><i className="ri-ball-pen-line"></i><span onClick={addProposal}>Enregistrer</span></button>
+            <button className='btn_ajout d-flex align-items-center gap-2'><i className="ri-ball-pen-line"></i><span onClick={addProposal}>Enregistrer</span></button>
         </div>
     );
 };

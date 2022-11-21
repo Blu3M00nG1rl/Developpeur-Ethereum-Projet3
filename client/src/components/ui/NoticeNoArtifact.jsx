@@ -1,8 +1,15 @@
+import { Row } from 'reactstrap';
+
 function NoticeNoArtifact() {
     return (
-        <p>
-            Le smart-contract n'est pas accessible.
-        </p>
+        <section className="section">
+            <Row>
+                <h1 className="text-center">
+                    Le smart-contract n'est pas accessible.
+                </h1>
+            </Row>
+        </section>
+
     );
 }
 

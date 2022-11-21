@@ -22,6 +22,8 @@ function VotersSectionBtns() {
         }
         const newAddress = inputAddress;
         await contract.methods.addVoter(newAddress).send({ from: accounts[0] });
+        setInputAddress("");
+        window.location.reload();
     };
 
     return (

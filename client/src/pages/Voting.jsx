@@ -1,5 +1,5 @@
 import React from 'react';
-import VotingSection from '../components/ui/VotingSection';
+import VotingSection from '../components/ui/vote/VotingSection';
 
 const Voting = () => {
     return (

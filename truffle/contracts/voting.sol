@@ -1,6 +1,10 @@
 // SPDX-License-Identifier: MIT
 
 pragma solidity 0.8.17;
+
+/// @title Voting Contract
+/// @author Sophie Constantin
+/// @notice Contract created for Alyra Project
 import "../node_modules/@openzeppelin/contracts/access/Ownable.sol";
 
 contract Voting is Ownable {
@@ -43,10 +47,8 @@ contract Voting is Ownable {
         _;
     }
 
-    // on peut faire un modifier pour les états
-
-    // ::::::::::::: GETTERS ::::::::::::: //
-
+    /// @notice Returns if the voter is registered, has voted, and the voted Proposal Id.
+    /// @dev  Retruns data from the mapping voters.
     function getVoter(address _addr)
         external
         view
@@ -56,6 +58,8 @@ contract Voting is Ownable {
         return voters[_addr];
     }
 
+    /// @notice Returns the proposal number.
+    /// @dev  return id from the array proposalsArray.
     function getOneProposal(uint256 _id)
         external
         view
@@ -65,8 +69,7 @@ contract Voting is Ownable {
         return proposalsArray[_id];
     }
 
-    // ::::::::::::: REGISTRATION ::::::::::::: //
-
+    /// @notice add Voter to whitelist (voters)
     function addVoter(address _addr) external onlyOwner {
         require(
             workflowStatus == WorkflowStatus.RegisteringVoters,
@@ -78,8 +81,7 @@ contract Voting is Ownable {
         emit VoterRegistered(_addr);
     }
 
-    // ::::::::::::: PROPOSAL ::::::::::::: //
-
+    /// @notice add ID Proposal to proposalsArray
     function addProposal(string calldata _desc) external onlyVoters {
         require(
             workflowStatus == WorkflowStatus.ProposalsRegistrationStarted,
@@ -88,8 +90,7 @@ contract Voting is Ownable {
         require(
             keccak256(abi.encode(_desc)) != keccak256(abi.encode("")),
             "Vous ne pouvez pas ne rien proposer"
-        ); // facultatif
-        // voir que desc est different des autres
+        );
 
         Proposal memory proposal;
         proposal.description = _desc;
@@ -97,24 +98,32 @@ contract Voting is Ownable {
         emit ProposalRegistered(proposalsArray.length - 1);
     }
 
-    // ::::::::::::: VOTE ::::::::::::: //
-
+    /// @notice vote for a proposal's id
+    /// @dev  dos_gas_limit vulnerability fixed on 2022-11-21 (implement temporary winner)
     function setVote(uint256 _id) external onlyVoters {
         require(
             workflowStatus == WorkflowStatus.VotingSessionStarted,
             "Voting session havent started yet"
         );
         require(voters[msg.sender].hasVoted != true, "You have already voted");
-        require(_id < proposalsArray.length, "Proposal not found"); // pas obligé, et pas besoin du >0 car uint
+        require(_id < proposalsArray.length, "Proposal not found");
 
         voters[msg.sender].votedProposalId = _id;
         voters[msg.sender].hasVoted = true;
         proposalsArray[_id].voteCount++;
 
+        /// @dev Calculate temporary winner
+        if (
+            proposalsArray[_id].voteCount >
+            proposalsArray[winningProposalID].voteCount
+        ) {
+            winningProposalID = _id;
+        }
+
         emit Voted(msg.sender, _id);
     }
 
-    // ::::::::::::: STATE ::::::::::::: //
+    /// @notice change status workflow functions
 
     function startProposalsRegistering() external onlyOwner {
         require(
@@ -169,21 +178,13 @@ contract Voting is Ownable {
         );
     }
 
+    /// @notice count winning proposal
+    /// @dev  dos_gas_limit vulnerability fixed on 2022-11-21
     function tallyVotes() external onlyOwner {
         require(
             workflowStatus == WorkflowStatus.VotingSessionEnded,
             "Current status is not voting session ended"
         );
-        uint256 _winningProposalId;
-        for (uint256 p = 0; p < proposalsArray.length; p++) {
-            if (
-                proposalsArray[p].voteCount >
-                proposalsArray[_winningProposalId].voteCount
-            ) {
-                _winningProposalId = p;
-            }
-        }
-        winningProposalID = _winningProposalId;
 
         workflowStatus = WorkflowStatus.VotesTallied;
         emit WorkflowStatusChange(

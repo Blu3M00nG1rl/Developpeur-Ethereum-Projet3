@@ -3,70 +3,71 @@ import useEth from "../../../contexts/EthContext/useEth"
 import { Table } from 'reactstrap';
 
 function ProposalsSectionData() {
-    const [EventText, setEventText] = useState("");
     const [oldEvents, setOldEvents] = useState([]);
+    const [oldDataDesc, setOldDataDesc] = useState();
+    const [oldDescriptions, setOldDescriptions] = useState([]);
 
-    const { state: { contract } } = useEth();
+
+    const { state: { contract, accounts } } = useEth();
+
+    //Rafraichit la page en cas de changement de compte
+    window.ethereum.on('accountsChanged', function (accounts) {
+        window.location.reload();
+    })
 
     useEffect(() => {
         (async function () {
 
+            //Liste des propositions
             let oldEvents = await contract.getPastEvents('ProposalRegistered', {
                 fromBlock: 0,
                 toBlock: 'latest'
             });
             let oldies = [];
             oldEvents.forEach(event => {
-                oldies.push(event.returnValues.proposalText);
+                oldies.push(event.returnValues.proposalId);
             });
             setOldEvents(oldies);
 
-            await contract.events.ProposalRegistered({ fromBlock: "earliest" })
-                .on('data', event => {
-                    let proposalsevents = event.returnValues.proposalText;
-                    setEventText(proposalsevents);
-                })
-                .on('changed', changed => console.log("changed :" + changed))
-                .on('error', err => console.log("error :" + err))
-                .on('connected', str => console.log("connected :" + str));
+            let desc_array = [];
+            oldies.forEach(data => {
+                let desc = contract.methods.getOneProposal(data).call({ from: accounts[0] });
+                desc
+                    .then((data) => {
+                        console.log("description : " + data.description);
+                        setOldDataDesc(data.description);
+                        desc_array.push(data.description);
+                    })
+                    .catch((err) => console.log("erreur : " + err));
+            });
+            setOldDescriptions(desc_array);
 
         })();
 
-    }, [contract])
-
-    const eventTextSection =
-        <>
-            <tr className="nouveau">
-                <td>Nouveau</td>
-                <td>{EventText}</td>
-            </tr>
-        </>;
+    }, [contract, accounts])
 
     return (
         <div className="content_data">
-            <Table striped bordered hover>
+            <Table striped bordered hover >
                 <thead>
                     <tr>
-                        <th>#</th>
-                        <th>Propositions déjà soumises</th>
+                        <th>N°</th>
+                        <th>Liste des propositions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {oldEvents.map((item, index) => (
+                    {oldDescriptions.map((item, index) => (
                         <tr key={index}>
-                            <td>{index}</td>
+                            <td>{index + 1}</td>
                             <td>{item}</td>
                         </tr>
                     ))}
-                    {
-                        EventText === "" ? "" : eventTextSection
-
-                    }
-
                 </tbody>
             </Table>
-
         </div>
+
+
+
 
     );
 };

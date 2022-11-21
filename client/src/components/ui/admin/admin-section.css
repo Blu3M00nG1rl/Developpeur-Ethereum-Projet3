@@ -1,66 +1,35 @@
-.content_data {
-    padding-top: 20px;
-    margin-bottom: 50px;
-    height: 70px;
-    color: #151964;
-}
-
-.content {
-    padding: 0px 60px !important;
-}
-
-.content h2 {
-    margin-top: 5%;
-    line-height: 55px;
-    font-size: 2.5rem;
-}
-
-.content h2 span {
-    color: #151964;
-}
-
-.btns {
-    margin-top: 40px;
-}
-
-.btn_ajout {
-    border: none;
-    outline: none;
-    padding: 7px 25px !important;
-    border-radius: 50px !important;
-    border: 1px !important;
-    font-size: .9rem;
-    background: linear-gradient(90deg, rgb(255, 99, 123) -2.21%, rgb(61, 67, 120) 100%);
-}
-
-.btn_ajout i {
-    color: #fff;
-    font-size: 1rem;
-}
-
-.btn_ajout span {
-    text-decoration: none;
-    color: #fff;
-}
-
-.btn {
-    margin-bottom: 5px;
-    width: 70%;
-    color: red;
-}
-
 input {
     border-radius: 50px;
     color: rgb(59, 67, 70);
     padding: 7px 25px;
     border: none;
-    width: 55%
+    width: 75% !important;
 }
 
 .table {
     width: 70% !important;
+    margin: 0 auto;
 }
 
 .nouveau {
     color: green;
+}
+
+.btn {
+    margin: 0 auto;
+}
+
+.status_btn {
+    width: 145%;
+    margin: 10px -20%;
+}
+
+.status_data {
+    color: #ffff;
+    background: rgb(61, 67, 120);
+    padding: 7px 25px !important;
+    border-radius: 50px !important;
+    border: 1px !important;
+    width: 50% !important;
+    margin: 40px auto !important;
 }

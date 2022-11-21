@@ -1,18 +1,8 @@
-.register_section {
-    padding-top: 120px;
-    background: #f2f1f8;
-}
-
-.register_content h2 {
-    margin-top: 5%;
-    line-height: 55px;
-    font-size: 2.5rem;
-}
-
-.register_content h2 span {
-    color: #151964;
-}
-
-.register_btns {
+.btns {
     margin-top: 40px;
+}
+
+.btn {
+    margin-bottom: 5px;
+    width: 70%;
 }
